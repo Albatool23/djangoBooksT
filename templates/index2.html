@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div>
+    <h1>Add an Author</h1>
+    <form  method="POST" action="author">
+        {% csrf_token %}
+        <label for="fname"> fname </label>
+        <input type="text" name="fname">
+        <label for="lname"> lname </label>
+        <input type="text" name="lname">
+        <label for="notes"> notes </label>
+        <input type="text" name="notes">
+        <input type="submit" value="Add">
+
+    </form>
+
+
+
+</div>
+<table>
+      <tr>
+            <th>ID</th>
+            <th>Tital</th>
+            <th>Action</th>
+        </tr>
+
+     {%for auth in author%}
+            <tr>
+                <td>{{auth.fname}}</td>
+                <td>{{auth.lname}}</td>
+                <td><a href="/showAuthor/?authorid={{auth.id}}"> View</a>   </td>
+            </tr>
+        {%endfor%}
+</table>
+
+
+
+
+</body>
+</html>
